@@ -229,3 +229,12 @@ export async function getUser(email: string) {
     throw new Error('Failed to fetch user.');
   }
 }
+
+export const invoiceCountPromise = async () => {
+  const count = await sql`SELECT COUNT(*) invoices`
+  return count.rows[0] as unknown as number
+} 
+export const customerCountPromise = async () => {
+  const count = await sql`SELECT COUNT(*) FROM customers`
+  return count.rows[0] as unknown as number
+}
